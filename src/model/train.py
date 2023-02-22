@@ -4,6 +4,8 @@ import argparse
 import glob
 import os
 import pandas as pd
+import matplotlib.pyplot as plt
+
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
@@ -32,14 +34,14 @@ def get_csvs_df(path):
 
 
 # function to split data
-def split_data(df, random_state):
+def split_data(df):
     # split dataframe into X and y
     X = df.drop(["Diabetic"], axis=1)
     y = df["Diabetic"]
 
     # train/test split
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=random_state
+        X, y, test_size=0.3, random_state=0
     )
 
     # return splits and encoder
